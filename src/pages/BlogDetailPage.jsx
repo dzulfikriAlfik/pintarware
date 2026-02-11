@@ -368,16 +368,8 @@ export default function BlogDetailPage() {
 
   return (
     <PageTransition>
-      {/* Hero Banner */}
-      <section className={`relative pt-28 pb-16 overflow-hidden bg-linear-to-br ${post.color}`}>
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
-            backgroundSize: "32px 32px",
-          }}
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-snow via-transparent to-transparent" />
+      {/* Hero Banner - solid color, tanpa gradasi */}
+      <section className={`relative pt-28 pb-16 overflow-hidden bg-midnight`}>
 
         <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <motion.div
@@ -421,35 +413,35 @@ export default function BlogDetailPage() {
         </div>
       </section>
 
-      {/* Article Content */}
-      <section className="relative py-16 lg:py-20">
+      {/* Article Content - wave nempel di atas mengarah kebawah (screenshot 2 style) */}
+      <section className="relative pt-36 pb-16 lg:pt-40 lg:pb-24 bg-wave-blog-down">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Breadcrumb */}
+          {/* Breadcrumb - full text, no truncation */}
           <FadeIn>
-            <nav className="flex items-center gap-2 text-sm text-midnight/40 mb-10">
+            <nav className="flex items-center gap-2 text-sm text-midnight-200 mb-12 flex-wrap" aria-label="Breadcrumb">
               <Link to="/" className="hover:text-azure transition-colors">
                 Home
               </Link>
-              <ChevronRight className="w-3.5 h-3.5" />
+              <ChevronRight className="w-3.5 h-3.5 shrink-0" />
               <Link to="/blog" className="hover:text-azure transition-colors">
                 Blog
               </Link>
-              <ChevronRight className="w-3.5 h-3.5" />
-              <span className="text-midnight/60 truncate max-w-50">
+              <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+              <span className="text-midnight font-medium max-w-full break-words">
                 {post.title}
               </span>
             </nav>
           </FadeIn>
 
-          {/* Article body */}
+          {/* Article body - typography jelas, line height optimal */}
           <FadeIn delay={0.1}>
-            <article className="prose-custom">
+            <article className="blog-article">
               {post.content.map((block, i) => {
                 if (block.type === "heading") {
                   return (
                     <h2
                       key={i}
-                      className="font-display text-2xl font-bold text-midnight mt-10 mb-4"
+                      className="font-display text-xl sm:text-2xl font-bold text-midnight mt-12 mb-4 first:mt-0 scroll-mt-24"
                     >
                       {block.text}
                     </h2>
@@ -458,7 +450,7 @@ export default function BlogDetailPage() {
                 return (
                   <p
                     key={i}
-                    className="text-midnight/65 leading-relaxed mb-5 text-[16.5px]"
+                    className="text-midnight-300 text-base sm:text-lg leading-[1.8] mb-6 max-w-[65ch]"
                   >
                     {block.text}
                   </p>
@@ -513,7 +505,7 @@ export default function BlogDetailPage() {
                       Dzulfikri
                     </h4>
                     <p className="text-sm text-azure font-medium mb-3">
-                      Mid-Level Full-Stack Developer
+                      Fullstack Developer · PHP & JavaScript
                     </p>
                     <p className="text-sm text-midnight/50 leading-relaxed">
                       I write about web development, software architecture, and my journey as a

@@ -22,16 +22,16 @@ import { FadeIn, AnimatedContainer, AnimatedItem } from "@/components/shared/Ani
 const timeline = [
   {
     year: "2023 - Present",
-    title: "Mid-Level Developer",
+    title: "Fullstack Developer",
     company: "PT. Pantona Teknologi Indonesia",
-    desc: "Building full-stack web applications for international clients. Specializing in React, VueJS, Node.js ecosystems with focus on scalable architectures.",
+    desc: "Building full-stack web apps with Laravel, CodeIgniter, React, Vue, Node.js. MySQL/PostgreSQL, WebSocket for real-time features. Microservice & monolith architectures.",
     type: "work",
   },
   {
     year: "2022 - 2023",
     title: "Junior Developer",
     company: "PT. Ambis Nusantara (Schoolfess Indonesia)",
-    desc: "Developed multiple client projects using modern JavaScript frameworks. Grew from junior to mid-level through hands-on project experience.",
+    desc: "Developed client projects using PHP (Laravel/CodeIgniter), JavaScript, React, Vue. Fullstack development with MySQL/PostgreSQL.",
     type: "work",
   },
   {
@@ -99,7 +99,7 @@ export default function AboutPage() {
                           <span className="text-5xl font-display font-extrabold text-white">D</span>
                         </div>
                         <h3 className="font-display text-2xl font-bold text-midnight mb-1">Dzulfikri</h3>
-                        <p className="font-mono text-sm text-azure">Mid-Level Developer</p>
+                        <p className="font-mono text-sm text-azure">Fullstack Developer · PHP & JavaScript</p>
                         <div className="flex items-center justify-center gap-2 mt-3 text-sm text-midnight/50">
                           <MapPin className="w-3.5 h-3.5" />
                           Indonesia
@@ -153,22 +153,20 @@ export default function AboutPage() {
               <FadeIn delay={0.3}>
                 <div className="space-y-4 text-midnight/60 leading-relaxed">
                   <p>
-                    I'm a mid-level full-stack developer based in Indonesia with over 3 years of
-                    experience building web applications. I specialize in React and Node.js
-                    ecosystems, with a strong focus on creating clean, maintainable, and
-                    performant code.
+                    I'm a fullstack developer based in Indonesia with 3+ years of experience,
+                    specializing in <strong className="text-midnight">PHP</strong> and <strong className="text-midnight">JavaScript</strong>. I build both
+                    monolith applications (Laravel, CodeIgniter) and microservice-based systems
+                    with React, Vue, or vanilla JS on the frontend and Node.js or PHP on the backend.
                   </p>
                   <p>
-                    My journey in programming started during my university years, and since then
-                    I've been dedicated to honing my craft through real-world projects. I've
-                    worked with startups, agencies, and individual clients — always delivering
-                    quality solutions on time.
+                    I work with MySQL and PostgreSQL, implement real-time features using WebSocket,
+                    and have experience in mobile development with React Native, Framework 7,
+                    and Native Android. For styling, I use vanilla CSS, Bootstrap, and Tailwind.
                   </p>
                   <p>
-                    I'm currently seeking remote opportunities where I can contribute my skills
-                    to meaningful projects while continuing to grow as a developer. I thrive in
-                    collaborative environments and believe in clear communication as the
-                    foundation of great teamwork.
+                    I'm currently seeking remote opportunities where I can contribute my fullstack
+                    expertise to meaningful projects. I thrive in collaborative environments and
+                    believe in clear communication as the foundation of great teamwork.
                   </p>
                 </div>
               </FadeIn>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2, ExternalLink } from "lucide-react";
+import { Menu, X, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useStore } from "@/store/useStore";
 import { cn } from "@/lib/utils";
@@ -30,6 +30,9 @@ export function Navbar() {
     closeMenu();
   }, [location.pathname, closeMenu]);
 
+  const isBlogDetail = /^\/blog\/[^/]+$/.test(location.pathname);
+  const isLightNav = isBlogDetail && !scrolled;
+
   return (
     <>
       <motion.header
@@ -46,18 +49,23 @@ export function Navbar() {
         <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-azure to-midnight flex items-center justify-center shadow-lg shadow-azure/20 group-hover:shadow-azure/40 transition-shadow duration-300">
-                <Code2 className="w-5 h-5 text-white" />
-              </div>
-              <div className="absolute -inset-1 rounded-xl bg-linear-to-br from-azure to-midnight opacity-0 group-hover:opacity-20 blur transition-opacity duration-300" />
-            </div>
+            <img
+              src="/pintarware.png"
+              alt="Pintarware"
+              className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-105"
+            />
             <div className="flex flex-col -space-y-0.5">
-              <span className="font-display font-bold text-midnight text-lg leading-tight">
+              <span className={cn(
+                "font-display font-bold text-lg leading-tight transition-colors",
+                isLightNav ? "text-white" : "text-midnight"
+              )}>
                 Dzulfikri
               </span>
-              <span className="text-[10px] font-mono text-azure tracking-widest uppercase">
-                Developer
+              <span className={cn(
+                "text-[10px] font-mono tracking-widest uppercase transition-colors",
+                isLightNav ? "text-white/80" : "text-azure"
+              )}>
+                Fullstack · PHP & JS
               </span>
             </div>
           </Link>
@@ -72,16 +80,23 @@ export function Navbar() {
                   to={link.path}
                   className={cn(
                     "relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300",
-                    isActive
-                      ? "text-azure"
-                      : "text-midnight/60 hover:text-midnight hover:bg-frost/40"
+                    isLightNav
+                      ? isActive
+                        ? "text-white"
+                        : "text-white/70 hover:text-white hover:bg-white/10"
+                      : isActive
+                        ? "text-azure"
+                        : "text-midnight/60 hover:text-midnight hover:bg-frost/40"
                   )}
                 >
                   {link.label}
                   {isActive && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute inset-0 bg-azure/10 rounded-lg border border-azure/15"
+                      className={cn(
+                        "absolute inset-0 rounded-lg",
+                        isLightNav ? "bg-white/15 border border-white/20" : "bg-azure/10 border border-azure/15"
+                      )}
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -93,9 +108,12 @@ export function Navbar() {
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
             <Button
-              variant="default"
+              variant={isLightNav ? "outline" : "default"}
               size="sm"
-              className="hidden md:inline-flex"
+              className={cn(
+                "hidden md:inline-flex transition-colors",
+                isLightNav && "border-white/40 text-white hover:bg-white/10 hover:text-white hover:border-white/60"
+              )}
               asChild
             >
               <Link to="/contact">
@@ -105,7 +123,12 @@ export function Navbar() {
 
             <button
               onClick={toggleMenu}
-              className="md:hidden relative w-10 h-10 rounded-xl bg-frost/50 flex items-center justify-center text-midnight hover:bg-frost transition-colors"
+              className={cn(
+                "md:hidden relative w-10 h-10 rounded-xl flex items-center justify-center transition-colors",
+                isLightNav
+                  ? "bg-white/20 text-white hover:bg-white/30"
+                  : "bg-frost/50 text-midnight hover:bg-frost"
+              )}
               aria-label="Toggle menu"
             >
               <AnimatePresence mode="wait">

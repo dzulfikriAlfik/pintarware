@@ -23,68 +23,41 @@ const stats = [
   { value: "3+", label: "Years Experience" },
   { value: "20+", label: "Projects Completed" },
   { value: "10+", label: "Happy Clients" },
-  { value: "5+", label: "Tech Stacks" },
+  { value: "2", label: "Primary Languages" },
 ];
 
 const highlights = [
   {
     icon: Code2,
-    title: "Clean Code",
-    desc: "Writing maintainable, scalable, and well-documented code.",
+    title: "PHP & JavaScript Specialist",
+    desc: "Deep expertise in both languages—monolith (Laravel, CodeIgniter) & microservice architecture.",
   },
   {
     icon: Layers,
-    title: "Full Stack",
-    desc: "From responsive frontends to robust backend architectures.",
+    title: "Full Stack Developer",
+    desc: "From React/Vue frontends to Node.js/PHP backends. MySQL, PostgreSQL, real-time WebSocket.",
   },
   {
     icon: Zap,
-    title: "Fast Delivery",
-    desc: "Efficient workflows and agile methodologies for quick turnaround.",
+    title: "Cross-Platform",
+    desc: "Web apps, mobile (React Native, Framework 7, Native Android). Vanilla CSS to Tailwind & Bootstrap.",
   },
 ];
 
 const techStack = [
-  "React", "Node.js", "TypeScript", "Python", "PostgreSQL", "MongoDB", 
-  "Docker", "AWS", "Next.js", "Tailwind CSS",
+  "PHP", "Laravel", "CodeIgniter", "JavaScript", "Node.js", "React", "Vue.js",
+  "MySQL", "PostgreSQL", "Tailwind", "Bootstrap", "WebSocket",
+  "React Native", "jQuery",
 ];
 
 export default function HomePage() {
   return (
     <PageTransition>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background decoration */}
+      {/* Hero Section - light background */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-snow">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-[10%] w-125 h-125 bg-azure/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-[5%] w-100 h-100 bg-frost/40 rounded-full blur-3xl" />
-          <div className="absolute top-1/3 left-1/2 w-75 h-75 bg-azure/3 rounded-full blur-3xl" />
-
-          {/* Grid pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `radial-gradient(circle, var(--color-midnight) 1px, transparent 1px)`,
-              backgroundSize: "40px 40px",
-            }}
-          />
-
-          {/* Floating shapes */}
-          <motion.div
-            animate={{ y: [-20, 20, -20], rotate: [0, 5, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-32 right-[20%] w-16 h-16 rounded-2xl border border-azure/10 bg-azure/5"
-          />
-          <motion.div
-            animate={{ y: [15, -15, 15], rotate: [0, -8, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-40 left-[15%] w-12 h-12 rounded-full border border-frost-200 bg-frost/30"
-          />
-          <motion.div
-            animate={{ y: [-10, 25, -10] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/2 right-[8%] w-8 h-8 rounded-lg border border-azure/15 bg-azure/5 rotate-45"
-          />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-azure/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frost/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         </div>
 
         <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-28 pb-16">
@@ -110,10 +83,10 @@ export default function HomePage() {
                 <p className="text-lg sm:text-xl text-midnight/60 leading-relaxed mb-4 max-w-lg">
                   A{" "}
                   <span className="text-azure font-semibold">
-                    Mid-Level Developer
+                    Fullstack Developer
                   </span>{" "}
-                  who builds modern, performant web applications with clean code
-                  and great user experiences.
+                  specializing in <span className="text-emphasis">PHP</span> & <span className="text-emphasis">JavaScript</span>—building
+                  monolith apps (Laravel, CodeIgniter) and microservice-based solutions with React/Vue and Node.js.
                 </p>
               </motion.div>
 
@@ -248,9 +221,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Highlights Section */}
-      <section className="py-20 lg:py-24 relative">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      {/* Highlights Section - wave di bawah, transisi ke Technologies */}
+      <section className="section-wave-highlights bg-snow py-20 lg:py-24 relative">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-14">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -296,19 +269,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tech Stack Section */}
-      <section className="py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-frost/30 via-azure-50/20 to-frost/40" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-azure/15 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-azure/10 to-transparent" />
-        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      {/* 1 Wave section - tengah page, Deel-style. Dark blue, wave top & bottom beda, biru gelap */}
+      <section className="section-wave-center py-24 lg:py-32 relative overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <FadeIn>
             <div className="text-center mb-10">
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-midnight mb-2">
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-2">
                 Technologies I Work With
               </h2>
-              <p className="text-midnight/50 text-sm">
-                My core tech stack for building modern applications
+              <p className="text-snow/70 text-sm">
+                PHP • Laravel • CodeIgniter • React • Vue • Node.js • MySQL • PostgreSQL • Tailwind • WebSocket
               </p>
             </div>
           </FadeIn>
@@ -318,7 +288,7 @@ export default function HomePage() {
               {techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white/70 border border-frost-200 text-sm font-medium text-midnight/70 hover:text-azure hover:border-azure/20 hover:bg-azure/5 shadow-sm hover:shadow-md transition-all duration-300 cursor-default"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white/15 border border-white/20 text-sm font-medium text-snow/90 hover:bg-white/25 hover:border-white/30 shadow-sm transition-all duration-300 cursor-default"
                 >
                   {tech}
                 </span>
@@ -328,14 +298,33 @@ export default function HomePage() {
 
           <FadeIn delay={0.3}>
             <div className="text-center mt-14">
-              <p className="text-midnight/50 mb-4">
+              <p className="text-snow/60 mb-4">
                 Interested in working together?
               </p>
-              <Button size="lg" asChild>
+              <Button size="lg" className="bg-azure hover:bg-azure-300 text-white" asChild>
                 <Link to="/contact">
                   Let's Talk <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.4}>
+            <div className="max-w-3xl mx-auto text-center mt-20 pt-16 border-t border-white/10">
+              <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mb-4">
+                Let's build something great together
+              </h3>
+              <p className="text-snow/60 mb-8">
+                Monolith, microservice, or real-time features—I'm ready to contribute.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button size="lg" className="bg-azure hover:bg-azure-300" asChild>
+                  <Link to="/contact">Get in touch <ArrowRight className="w-4 h-4" /></Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10" asChild>
+                  <Link to="/projects">View Projects</Link>
+                </Button>
+              </div>
             </div>
           </FadeIn>
         </div>

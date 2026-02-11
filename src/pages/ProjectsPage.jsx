@@ -21,9 +21,9 @@ const projects = [
   {
     title: "E-Commerce Platform",
     description:
-      "A full-featured online store with product management, cart functionality, payment integration, and admin dashboard. Built with modern stack for optimal performance.",
+      "Full-featured online store with Laravel backend, React/Vue frontend. Product management, cart, payment integration, admin dashboard. MySQL/PostgreSQL.",
     image: null,
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
+    tags: ["Laravel", "React", "Vue", "MySQL", "Tailwind"],
     category: "Full Stack",
     github: null,
     demo: null,
@@ -31,11 +31,11 @@ const projects = [
     color: "from-azure to-midnight",
   },
   {
-    title: "Project Management App",
+    title: "Real-time Dashboard",
     description:
-      "Collaborative project management tool with real-time updates, Kanban boards, task assignments, and team chat functionality.",
+      "Collaborative dashboard with real-time updates via WebSocket. Live data visualization, notifications, and team collaboration features.",
     image: null,
-    tags: ["Next.js", "TypeScript", "Prisma", "WebSocket"],
+    tags: ["Node.js", "React", "WebSocket", "PostgreSQL"],
     category: "Full Stack",
     github: null,
     demo: null,
@@ -43,23 +43,11 @@ const projects = [
     color: "from-azure-300 to-azure-600",
   },
   {
-    title: "AI Content Generator",
+    title: "Project Management (Monolith)",
     description:
-      "Web application leveraging OpenAI API to generate blog posts, social media content, and marketing copy with customizable templates.",
+      "Internal project management built with Laravel and CodeIgniter. Kanban boards, tasks, reports, and role-based access.",
     image: null,
-    tags: ["React", "Python", "FastAPI", "OpenAI"],
-    category: "Full Stack",
-    github: null,
-    demo: null,
-    featured: false,
-    color: "from-midnight to-azure-500",
-  },
-  {
-    title: "Real-time Chat Application",
-    description:
-      "Feature-rich messaging platform with end-to-end encryption, file sharing, group chats, and read receipts.",
-    image: null,
-    tags: ["React", "Socket.io", "MongoDB", "Express"],
+    tags: ["Laravel", "CodeIgniter", "PHP", "MySQL", "Bootstrap"],
     category: "Full Stack",
     github: null,
     demo: null,
@@ -67,11 +55,11 @@ const projects = [
     color: "from-azure-200 to-azure",
   },
   {
-    title: "Portfolio Dashboard",
+    title: "Admin Dashboard",
     description:
-      "Interactive analytics dashboard for tracking investments with real-time data visualization, charts, and performance metrics.",
+      "Admin panel with React/Vue frontend and Node.js/PHP API. Charts, tables, CRUD operations. Vanilla CSS, Bootstrap, Tailwind.",
     image: null,
-    tags: ["React", "D3.js", "Tailwind CSS", "REST API"],
+    tags: ["React", "Vue", "Node.js", "PHP", "Tailwind"],
     category: "Frontend",
     github: null,
     demo: null,
@@ -79,12 +67,12 @@ const projects = [
     color: "from-azure to-midnight-200",
   },
   {
-    title: "REST API Microservice",
+    title: "Mobile App (React Native)",
     description:
-      "Scalable microservice architecture with API gateway, service discovery, rate limiting, and comprehensive documentation.",
+      "Cross-platform mobile app built with React Native. Offline support, push notifications, and REST API integration.",
     image: null,
-    tags: ["Node.js", "Docker", "Redis", "PostgreSQL"],
-    category: "Backend",
+    tags: ["React Native", "JavaScript", "REST API"],
+    category: "Mobile",
     github: null,
     demo: null,
     featured: false,

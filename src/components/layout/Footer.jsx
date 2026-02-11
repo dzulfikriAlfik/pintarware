@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Code2, Github, Linkedin, Mail, Heart, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, Heart, ArrowUpRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const footerLinks = [
@@ -45,21 +45,23 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-azure to-azure-300 flex items-center justify-center">
-                <Code2 className="w-5 h-5 text-white" />
-              </div>
+              <img
+                src="/pintarware.png"
+                alt="Pintarware"
+                className="w-10 h-10 object-contain"
+              />
               <div className="flex flex-col -space-y-0.5">
                 <span className="font-display font-bold text-snow text-lg">
                   Dzulfikri
                 </span>
                 <span className="text-[10px] font-mono text-azure-200 tracking-widest uppercase">
-                  Developer
+                  Fullstack · PHP & JS
                 </span>
               </div>
             </Link>
             <p className="text-snow/50 text-sm leading-relaxed max-w-sm mb-6">
-              A passionate mid-level developer crafting modern web experiences.
-              Available for remote work and exciting projects.
+              Fullstack programmer & remote developer. PHP, Laravel, React, Vue, Node.js.
+              Programming blog • Hire for web development projects.
             </p>
             <div className="flex items-center gap-3">
               {socialLinks.map((social) => (

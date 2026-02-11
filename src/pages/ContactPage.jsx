@@ -56,10 +56,10 @@ const socialLinks = [
 ];
 
 const reasons = [
-  "Need a reliable developer for your project",
-  "Looking for a remote team member",
-  "Have an exciting startup idea",
-  "Want to collaborate on open-source",
+  "Need PHP/Laravel or React/Node.js expertise",
+  "Building monolith or microservice architecture",
+  "Real-time features (WebSocket)",
+  "Mobile app or fullstack web project",
 ];
 
 export default function ContactPage() {
