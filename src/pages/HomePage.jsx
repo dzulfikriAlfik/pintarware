@@ -106,10 +106,10 @@ export default function HomePage() {
                     </Link>
                   </Button>
                   <Button variant="outline" size="lg" asChild>
-                    <Link to="/contact">
+                    <a href="/Resume Dzulfikri.pdf" download="Resume Dzulfikri.pdf">
                       <Download className="w-4 h-4" />
                       Download CV
-                    </Link>
+                    </a>
                   </Button>
                 </div>
               </motion.div>
