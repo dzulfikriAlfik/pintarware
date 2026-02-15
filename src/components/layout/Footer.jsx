@@ -81,7 +81,16 @@ export function Footer() {
         <div className="pt-8 border-t border-stone-700 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-stone-500">
           <p>&copy; {new Date().getFullYear()} Pintarware. All rights reserved.</p>
           <p className="flex items-center gap-1.5">
-            Dibuat dengan <Heart className="w-3.5 h-3.5 text-amber-500 fill-amber-500" /> • React + Tailwind
+            Created by{" "}
+            <a
+              href="https://dzulfikri.pintarware.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-400 hover:text-teal-300 transition-colors underline-offset-2 hover:underline"
+            >
+              Dzulfikri
+            </a>
+            {" "}• Dibuat dengan <Heart className="w-3.5 h-3.5 text-amber-500 fill-amber-500 inline" /> React + Tailwind
           </p>
         </div>
       </div>
