@@ -1,35 +1,22 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { FileText, Calendar, ArrowRight } from "lucide-react";
 import { SEO } from "@/components/seo/SEO";
 
-const posts = [
-  {
-    slug: "tips-belajar-programming",
-    title: "5 Tips Belajar Programming tanpa Burnout",
-    excerpt: "Belajar coding butuh konsistensi. Simak cara tetap produktif tanpa kelelahan mental.",
-    date: "12 Feb 2025",
-  },
-  {
-    slug: "react-vs-vue-2025",
-    title: "React vs Vue di 2025: Pilih yang Mana?",
-    excerpt: "Perbandingan kedua framework populer untuk memudahkan keputusan proyek Anda.",
-    date: "8 Feb 2025",
-  },
-  {
-    slug: "api-design-laravel",
-    title: "API Design yang Rapi dengan Laravel",
-    excerpt: "Best practices merancang REST API—struktur, versioning, dan error handling.",
-    date: "1 Feb 2025",
-  },
+const postsConfig = [
+  { slug: "tips-belajar-programming", titleKey: "post1Title", excerptKey: "post1Excerpt", date: "12 Feb 2025" },
+  { slug: "react-vs-vue-2025", titleKey: "post2Title", excerptKey: "post2Excerpt", date: "8 Feb 2025" },
+  { slug: "api-design-laravel", titleKey: "post3Title", excerptKey: "post3Excerpt", date: "1 Feb 2025" },
 ];
 
 export default function BlogPage() {
+  const { t } = useTranslation();
   return (
     <div className="pt-24 pb-20">
       <SEO
-        title="Blog"
-        description="Blog programming Pintarware—artikel, tutorial, dan tips coding. Tips belajar programming, React vs Vue, API design Laravel, dan banyak lagi."
+        title={t("blog.title")}
+        description="Pintarware programming blog—articles, tutorials, and coding tips. Learning programming tips, React vs Vue, Laravel API design, and more."
         keywords="blog programming, tutorial coding Indonesia, tips belajar programming, artikel React, tutorial Laravel"
         path="/blog"
       />
@@ -41,15 +28,15 @@ export default function BlogPage() {
           className="mb-16"
         >
           <h1 className="font-display text-3xl sm:text-4xl font-bold text-stone-900 mb-4">
-            Blog
+            {t("blog.title")}
           </h1>
           <p className="text-stone-600 text-lg">
-            Artikel, tutorial, dan tips programming—dibagikan lewat tulisan yang praktis.
+            {t("blog.subtitle")}
           </p>
         </motion.div>
 
         <div className="space-y-8">
-          {posts.map((post, i) => (
+          {postsConfig.map((post, i) => (
             <motion.article
               key={post.slug}
               initial={{ opacity: 0, y: 24 }}
@@ -69,11 +56,11 @@ export default function BlogPage() {
                       <Calendar className="w-4 h-4" /> {post.date}
                     </span>
                     <h2 className="font-display font-semibold text-xl text-stone-900 mb-2 group-hover:text-teal-600 transition-colors">
-                      {post.title}
+                      {t(`blog.${post.titleKey}`)}
                     </h2>
-                    <p className="text-stone-600">{post.excerpt}</p>
+                    <p className="text-stone-600">{t(`blog.${post.excerptKey}`)}</p>
                     <span className="inline-flex items-center gap-1 text-teal-600 text-sm font-medium mt-3 group-hover:gap-2 transition-all">
-                      Baca selengkapnya <ArrowRight className="w-4 h-4" />
+                      {t("blog.readMore")} <ArrowRight className="w-4 h-4" />
                     </span>
                   </div>
                 </div>
@@ -88,7 +75,7 @@ export default function BlogPage() {
           transition={{ delay: 0.5 }}
           className="mt-16 text-center text-stone-500"
         >
-          <p>Artikel baru terbit berkala. Stay tuned!</p>
+          <p>{t("blog.stayTuned")}</p>
         </motion.div>
       </div>
     </div>

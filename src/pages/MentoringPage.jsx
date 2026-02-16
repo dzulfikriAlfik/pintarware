@@ -1,21 +1,18 @@
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { MessageCircle, Clock, CheckCircle2, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
 
-const benefits = [
-  "Diskusi teknis & arsitektur",
-  "Code review & best practices",
-  "Bimbingan proyek atau tugas",
-  "Q&A spesifik sesuai kebutuhan",
-];
+const benefitKeys = ["benefit1", "benefit2", "benefit3", "benefit4"];
 
 export default function MentoringPage() {
+  const { t } = useTranslation();
   return (
     <div className="pt-24 pb-20">
       <SEO
-        title="Mentoring 1-on-1"
-        description="Mentoring programming 1-on-1 Pintarware—sesi live per jam. Diskusi teknis, code review, bimbingan proyek. Booking tersedia."
+        title={t("mentoring.title")}
+        description="Pintarware 1-on-1 programming mentoring—hourly live sessions. Technical discussion, code review, project guidance. Booking available."
         keywords="mentoring programming, code review Indonesia, bimbingan proyek coding, konsultasi developer, mentoring Laravel React"
         path="/mentoring"
       />
@@ -27,10 +24,10 @@ export default function MentoringPage() {
           className="mb-16"
         >
           <h1 className="font-display text-3xl sm:text-4xl font-bold text-stone-900 mb-4">
-            Mentoring 1-on-1
+            {t("mentoring.title")}
           </h1>
           <p className="text-stone-600 max-w-2xl text-lg">
-            Sesi live per jam—diskusi teknis, code review, atau bimbingan proyek. Booking tersedia sesuai jadwal.
+            {t("mentoring.subtitle")}
           </p>
         </motion.div>
 
@@ -47,29 +44,29 @@ export default function MentoringPage() {
               </div>
               <div>
                 <h2 className="font-display font-semibold text-xl text-stone-900">
-                  Sesi Live
+                  {t("mentoring.liveSession")}
                 </h2>
                 <p className="text-sm text-stone-500 flex items-center gap-1">
-                  <Clock className="w-4 h-4" /> 1 jam per sesi
+                  <Clock className="w-4 h-4" /> {t("mentoring.perSession")}
                 </p>
               </div>
             </div>
 
             <ul className="space-y-3 mb-8">
-              {benefits.map((benefit) => (
-                <li key={benefit} className="flex items-center gap-3 text-stone-700">
+              {benefitKeys.map((key) => (
+                <li key={key} className="flex items-center gap-3 text-stone-700">
                   <CheckCircle2 className="w-5 h-5 text-teal-500 shrink-0" />
-                  {benefit}
+                  {t(`mentoring.${key}`)}
                 </li>
               ))}
             </ul>
 
             <div className="p-4 rounded-xl bg-amber-50 border border-amber-200/60 mb-6">
               <p className="text-sm text-stone-700">
-                <span className="font-semibold text-amber-700">Rate:</span> Rp XXX.XXX / jam
+                <span className="font-semibold text-amber-700">Rate:</span> {t("mentoring.rate")}
               </p>
               <p className="text-xs text-stone-500 mt-1">
-                Harga dapat disesuaikan tergantung topik dan durasi.
+                {t("mentoring.rateNote")}
               </p>
             </div>
 
@@ -80,7 +77,7 @@ export default function MentoringPage() {
                 rel="noopener noreferrer"
               >
                 <Calendar className="w-4 h-4" />
-                Booking via Email
+                {t("mentoring.bookViaEmail")}
               </a>
             </Button>
           </motion.div>
@@ -92,7 +89,7 @@ export default function MentoringPage() {
             className="p-8 rounded-2xl bg-stone-100 border border-stone-200"
           >
             <h3 className="font-display font-semibold text-lg text-stone-900 mb-4">
-              Cara Booking
+              {t("mentoring.howToBook")}
             </h3>
             <ol className="space-y-4">
               <li className="flex gap-4">
@@ -100,10 +97,8 @@ export default function MentoringPage() {
                   1
                 </span>
                 <div>
-                  <p className="font-medium text-stone-800">Kirim email</p>
-                  <p className="text-sm text-stone-600">
-                    Jelaskan topik, tujuan, dan preferensi jadwal. Sertakan link repo jika ada code review.
-                  </p>
+                  <p className="font-medium text-stone-800">{t("mentoring.step1Title")}</p>
+                  <p className="text-sm text-stone-600">{t("mentoring.step1Desc")}</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -111,10 +106,8 @@ export default function MentoringPage() {
                   2
                 </span>
                 <div>
-                  <p className="font-medium text-stone-800">Konfirmasi jadwal</p>
-                  <p className="text-sm text-stone-600">
-                    Saya akan balas dengan slot yang tersedia. Setelah deal, link meeting dikirim.
-                  </p>
+                  <p className="font-medium text-stone-800">{t("mentoring.step2Title")}</p>
+                  <p className="text-sm text-stone-600">{t("mentoring.step2Desc")}</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -122,10 +115,8 @@ export default function MentoringPage() {
                   3
                 </span>
                 <div>
-                  <p className="font-medium text-stone-800">Sesi berjalan</p>
-                  <p className="text-sm text-stone-600">
-                    Meet via Google Meet/Zoom. Sesi fokus sesuai yang kamu butuhkan.
-                  </p>
+                  <p className="font-medium text-stone-800">{t("mentoring.step3Title")}</p>
+                  <p className="text-sm text-stone-600">{t("mentoring.step3Desc")}</p>
                 </div>
               </li>
             </ol>

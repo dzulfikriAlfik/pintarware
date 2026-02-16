@@ -1,19 +1,20 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Github, Linkedin, Mail, Heart, ArrowUpRight } from "lucide-react";
 
-const footerLinks = [
+const footerLinksConfig = [
   {
-    title: "Edukasi",
+    titleKey: "education",
     links: [
-      { label: "Kursus", path: "/courses" },
-      { label: "Blog", path: "/blog" },
+      { key: "courses", path: "/courses" },
+      { key: "blog", path: "/blog" },
     ],
   },
   {
-    title: "Layanan",
+    titleKey: "services",
     links: [
-      { label: "Produk Digital", path: "/products" },
-      { label: "Mentoring", path: "/mentoring" },
+      { key: "products", path: "/products" },
+      { key: "mentoring", path: "/mentoring" },
     ],
   },
 ];
@@ -25,6 +26,8 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="relative bg-stone-800 text-stone-300 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(20,184,166,0.08)_0%,transparent_50%)]" />
@@ -38,7 +41,7 @@ export function Footer() {
               <span className="font-display font-semibold text-white text-lg">Pintarware</span>
             </Link>
             <p className="text-stone-400 text-sm leading-relaxed max-w-sm mb-6">
-              Platform edukasi untuk belajar programming—kursus online, blog, produk digital, dan mentoring langsung. Mari tumbuh bersama.
+              {t("footer.description")}
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -56,10 +59,10 @@ export function Footer() {
             </div>
           </div>
 
-          {footerLinks.map((group) => (
-            <div key={group.title}>
+          {footerLinksConfig.map((group) => (
+            <div key={group.titleKey}>
               <h4 className="font-display font-semibold text-white text-sm uppercase tracking-wider mb-4">
-                {group.title}
+                {t(`footer.${group.titleKey}`)}
               </h4>
               <ul className="space-y-2.5">
                 {group.links.map((link) => (
@@ -68,7 +71,7 @@ export function Footer() {
                       to={link.path}
                       className="text-sm text-stone-400 hover:text-teal-400 transition-colors flex items-center gap-1 group"
                     >
-                      {link.label}
+                      {t(`nav.${link.key}`)}
                       <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all" />
                     </Link>
                   </li>
@@ -79,9 +82,9 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-stone-700 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-stone-500">
-          <p>&copy; {new Date().getFullYear()} Pintarware. All rights reserved.</p>
+          <p>{t("footer.copyright", { year: new Date().getFullYear() })}</p>
           <p className="flex items-center gap-1.5">
-            Created by{" "}
+            {t("footer.createdBy")}{" "}
             <a
               href="https://dzulfikri.pintarware.com"
               target="_blank"
@@ -90,7 +93,7 @@ export function Footer() {
             >
               Dzulfikri
             </a>
-            {" "}• Dibuat dengan <Heart className="w-3.5 h-3.5 text-amber-500 fill-amber-500 inline" /> React + Tailwind
+            {" "}• {t("footer.madeWith")} <Heart className="w-3.5 h-3.5 text-amber-500 fill-amber-500 inline" /> React + Tailwind
           </p>
         </div>
       </div>

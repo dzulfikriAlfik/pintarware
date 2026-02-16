@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LocaleSelector } from "@/components/ui/LocaleSelector";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { path: "/", label: "Home" },
-  { path: "/courses", label: "Kursus" },
-  { path: "/blog", label: "Blog" },
-  { path: "/products", label: "Produk Digital" },
-  { path: "/mentoring", label: "Mentoring" },
+const navPaths = [
+  { path: "/", key: "home" },
+  { path: "/courses", key: "courses" },
+  { path: "/blog", key: "blog" },
+  { path: "/products", key: "products" },
+  { path: "/mentoring", key: "mentoring" },
 ];
 
 export function Navbar() {
+  const { t } = useTranslation();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -54,7 +57,7 @@ export function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => {
+            {navPaths.map((link) => {
               const isActive = location.pathname === link.path;
               return (
                 <Link
@@ -67,17 +70,18 @@ export function Navbar() {
                       : "text-stone-600 hover:text-teal-600 hover:bg-stone-100"
                   )}
                 >
-                  {link.label}
+                  {t(`nav.${link.key}`)}
                 </Link>
               );
             })}
           </div>
 
           <div className="flex items-center gap-3">
+            <LocaleSelector />
             <Button variant="accent" size="sm" className="hidden md:inline-flex" asChild>
               <Link to="/courses">
                 <BookOpen className="w-4 h-4" />
-                Mulai Belajar
+                {t("nav.startLearning")}
               </Link>
             </Button>
 
@@ -121,7 +125,7 @@ export function Navbar() {
             >
               <div className="flex flex-col h-full pt-24 px-6 pb-8">
                 <div className="flex flex-col gap-1">
-                  {navLinks.map((link, i) => {
+                  {navPaths.map((link, i) => {
                     const isActive = location.pathname === link.path;
                     return (
                       <motion.div key={link.path} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}>
@@ -132,15 +136,16 @@ export function Navbar() {
                             isActive ? "bg-teal-50 text-teal-600" : "text-stone-700 hover:bg-stone-100"
                           )}
                         >
-                          {link.label}
+                          {t(`nav.${link.key}`)}
                         </Link>
                       </motion.div>
                     );
                   })}
                 </div>
-                <div className="mt-auto pt-4">
+                <div className="mt-auto pt-4 space-y-3">
+                  <LocaleSelector />
                   <Button variant="accent" className="w-full" asChild>
-                    <Link to="/courses">Mulai Belajar</Link>
+                    <Link to="/courses">{t("nav.startLearning")}</Link>
                   </Button>
                 </div>
               </div>

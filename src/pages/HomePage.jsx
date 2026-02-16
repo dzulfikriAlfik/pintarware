@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import {
   BookOpen,
@@ -14,35 +15,35 @@ import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
 import { baseJsonLd } from "@/lib/seo";
 
-const offerings = [
+const offeringsConfig = [
   {
     icon: BookOpen,
-    title: "Kursus Online",
-    desc: "Konten pembelajaran gratis & berbayar—dari dasar sampai advanced. Self-paced, sertifikat, dan materi terstruktur.",
+    titleKey: "offering1Title",
+    descKey: "offering1Desc",
     path: "/courses",
     color: "from-teal-500/10 to-teal-600/5",
     iconBg: "bg-teal-100 text-teal-600",
   },
   {
     icon: FileText,
-    title: "Blog",
-    desc: "Artikel, tutorial, dan tips programming. Berbagi ilmu lewat tulisan—praktis dan mudah diikuti.",
+    titleKey: "offering2Title",
+    descKey: "offering2Desc",
     path: "/blog",
     color: "from-amber-500/10 to-amber-600/5",
     iconBg: "bg-amber-100 text-amber-600",
   },
   {
     icon: Package,
-    title: "Produk Digital",
-    desc: "Template, starter kit, dan aplikasi siap pakai. Hemat waktu dengan solusi yang sudah teruji.",
+    titleKey: "offering3Title",
+    descKey: "offering3Desc",
     path: "/products",
     color: "from-teal-500/10 to-teal-600/5",
     iconBg: "bg-teal-100 text-teal-600",
   },
   {
     icon: MessageCircle,
-    title: "Mentoring 1-on-1",
-    desc: "Sesi live per jam—diskusi teknis, code review, atau bimbingan proyek. Booking tersedia.",
+    titleKey: "offering4Title",
+    descKey: "offering4Desc",
     path: "/mentoring",
     color: "from-amber-500/10 to-amber-600/5",
     iconBg: "bg-amber-100 text-amber-600",
@@ -50,11 +51,12 @@ const offerings = [
 ];
 
 export default function HomePage() {
+  const { t } = useTranslation();
   return (
     <div>
       <SEO
-        fullTitle="Pintarware — Belajar & Tumbuh Bersama | Kursus, Blog, Mentoring"
-        description="Pintarware — Platform edukasi programming Indonesia. Kursus online gratis & berbayar, blog tutorial, produk digital, dan mentoring 1-on-1. Belajar PHP, Laravel, React, Vue, Node.js."
+        fullTitle={t("seo.homeTitle")}
+        description={t("seo.homeDesc")}
         keywords="pintarware, kursus programming Indonesia, belajar coding, tutorial Laravel, kursus React, blog programming, mentoring coding, produk digital developer"
         path="/"
         jsonLd={baseJsonLd}
@@ -76,7 +78,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 border border-teal-200/60 text-teal-700 text-sm font-medium mb-6"
             >
               <Sparkles className="w-4 h-4" />
-              Platform Edukasi Programming
+              {t("home.badge")}
             </motion.div>
 
             <motion.h1
@@ -85,8 +87,8 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.15] text-stone-900 mb-6"
             >
-              Belajar &{" "}
-              <span className="gradient-text">Tumbuh</span> Bersama
+              {t("home.heroTitle")}{" "}
+              <span className="gradient-text">{t("home.heroTitleHighlight")}</span> {t("home.heroTitleSuffix")}
             </motion.h1>
 
             <motion.p
@@ -95,7 +97,7 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg sm:text-xl text-stone-600 leading-relaxed mb-8 max-w-2xl"
             >
-              Kursus online, blog, produk digital, dan mentoring langsung—dari praktisi untuk praktisi. Mulai dari nol atau tingkatkan skill kamu.
+              {t("home.heroDesc")}
             </motion.p>
 
             <motion.div
@@ -107,12 +109,12 @@ export default function HomePage() {
               <Button variant="accent" size="lg" asChild>
                 <Link to="/courses">
                   <Play className="w-4 h-4" />
-                  Mulai Belajar Gratis
+                  {t("home.ctaStart")}
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link to="/blog">
-                  Baca Blog <ArrowRight className="w-4 h-4" />
+                  {t("home.ctaBlog")} <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
             </motion.div>
@@ -131,15 +133,15 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-stone-900 mb-4">
-              Apa yang Bisa Kamu Dapatkan
+              {t("home.offeringsTitle")}
             </h2>
             <p className="text-stone-600 max-w-2xl mx-auto">
-              Empat cara belajar—pilih yang paling sesuai dengan kebutuhanmu.
+              {t("home.offeringsSubtitle")}
             </p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {offerings.map((item, i) => (
+            {offeringsConfig.map((item, i) => (
               <motion.div
                 key={item.path}
                 initial={{ opacity: 0, y: 24 }}
@@ -157,13 +159,13 @@ export default function HomePage() {
                     <item.icon className="w-6 h-6" />
                   </div>
                   <h3 className="font-display font-semibold text-lg text-stone-900 mb-2 group-hover:text-teal-700 transition-colors">
-                    {item.title}
+                    {t(`home.${item.titleKey}`)}
                   </h3>
                   <p className="text-sm text-stone-600 leading-relaxed mb-4">
-                    {item.desc}
+                    {t(`home.${item.descKey}`)}
                   </p>
                   <span className="inline-flex items-center gap-1 text-teal-600 text-sm font-medium group-hover:gap-2 transition-all">
-                    Jelajahi <ArrowRight className="w-4 h-4" />
+                    {t("home.explore")} <ArrowRight className="w-4 h-4" />
                   </span>
                 </Link>
               </motion.div>
@@ -183,7 +185,7 @@ export default function HomePage() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-stone-300 text-sm mb-6"
           >
             <GraduationCap className="w-4 h-4" />
-            Siap mulai?
+            {t("home.ctaSectionBadge")}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -192,7 +194,7 @@ export default function HomePage() {
             transition={{ delay: 0.1 }}
             className="font-display text-3xl sm:text-4xl font-bold text-white mb-4"
           >
-            Mulai Perjalanan Belajarmu
+            {t("home.ctaSectionTitle")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -201,7 +203,7 @@ export default function HomePage() {
             transition={{ delay: 0.2 }}
             className="text-stone-400 max-w-xl mx-auto mb-8"
           >
-            Gratis dulu—eksplorasi kursus dan blog. Sudah siap level up? Lanjut ke materi premium atau booking mentoring.
+            {t("home.ctaSectionDesc")}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -215,7 +217,7 @@ export default function HomePage() {
               className="bg-teal-500 hover:bg-teal-400 text-white border-0"
               asChild
             >
-              <Link to="/courses">Lihat Kursus</Link>
+              <Link to="/courses">{t("home.viewCourses")}</Link>
             </Button>
             <Button
               variant="outline"
@@ -223,7 +225,7 @@ export default function HomePage() {
               className="border-stone-600 text-white hover:bg-white/10 hover:border-stone-500"
               asChild
             >
-              <Link to="/mentoring">Booking Mentoring</Link>
+              <Link to="/mentoring">{t("home.bookMentoring")}</Link>
             </Button>
           </motion.div>
         </div>

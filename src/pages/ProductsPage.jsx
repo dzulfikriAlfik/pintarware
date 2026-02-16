@@ -1,36 +1,23 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Package, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
 
-const products = [
-  {
-    title: "Starter Kit Laravel + React",
-    desc: "Boilerplate fullstack siap pakai—auth, API, frontend modern. Hemat waktu setup proyek baru.",
-    price: "Rp 299.000",
-    link: "#",
-  },
-  {
-    title: "Template Admin Dashboard",
-    desc: "Dashboard admin responsif dengan sidebar, tables, charts. Bisa dikustomisasi untuk kebutuhanmu.",
-    price: "Rp 149.000",
-    link: "#",
-  },
-  {
-    title: "Landing Page Generator",
-    desc: "Komponen landing page modular—hero, features, pricing. Copy-paste dan sesuaikan.",
-    price: "Gratis",
-    link: "#",
-  },
+const productsConfig = [
+  { titleKey: "product1Title", descKey: "product1Desc", priceKey: "product1Price", link: "#" },
+  { titleKey: "product2Title", descKey: "product2Desc", priceKey: "product2Price", link: "#" },
+  { titleKey: "product3Title", descKey: "product3Desc", priceKey: "product3Price", link: "#" },
 ];
 
 export default function ProductsPage() {
+  const { t } = useTranslation();
   return (
     <div className="pt-24 pb-20">
       <SEO
-        title="Produk Digital"
-        description="Produk digital Pintarware—starter kit Laravel React, template admin dashboard, landing page. Hemat waktu development dengan solusi siap pakai."
+        title={t("products.title")}
+        description="Pintarware digital products—Laravel React starter kit, admin dashboard template, landing page. Save development time with ready-to-use solutions."
         keywords="produk digital developer, starter kit Laravel, template admin dashboard, boilerplate React, landing page template"
         path="/products"
       />
@@ -42,17 +29,17 @@ export default function ProductsPage() {
           className="mb-16"
         >
           <h1 className="font-display text-3xl sm:text-4xl font-bold text-stone-900 mb-4">
-            Produk Digital
+            {t("products.title")}
           </h1>
           <p className="text-stone-600 max-w-2xl text-lg">
-            Template, starter kit, dan aplikasi siap pakai—hemat waktu development dengan solusi yang sudah teruji.
+            {t("products.subtitle")}
           </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product, i) => (
+          {productsConfig.map((product, i) => (
             <motion.div
-              key={product.title}
+              key={product.titleKey}
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
@@ -62,14 +49,14 @@ export default function ProductsPage() {
                 <Package className="w-6 h-6" />
               </div>
               <h2 className="font-display font-semibold text-xl text-stone-900 mb-2">
-                {product.title}
+                {t(`products.${product.titleKey}`)}
               </h2>
-              <p className="text-stone-600 flex-1 mb-6">{product.desc}</p>
+              <p className="text-stone-600 flex-1 mb-6">{t(`products.${product.descKey}`)}</p>
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-stone-900">{product.price}</span>
+                <span className="font-semibold text-stone-900">{t(`products.${product.priceKey}`)}</span>
                 <Button variant="outline" size="sm" asChild>
                   <a href={product.link} target="_blank" rel="noopener noreferrer">
-                    Lihat <ExternalLink className="w-4 h-4" />
+                    {t("products.view")} <ExternalLink className="w-4 h-4" />
                   </a>
                 </Button>
               </div>
@@ -84,10 +71,10 @@ export default function ProductsPage() {
           className="mt-16 p-8 rounded-2xl bg-stone-100 border border-stone-200 text-center"
         >
           <p className="text-stone-600 mb-4">
-            Produk baru akan ditambahkan seiring waktu. Ingin request produk tertentu? Kontak via mentoring.
+            {t("products.newProductsNote")}
           </p>
           <Button variant="default" asChild>
-            <Link to="/mentoring">Booking Mentoring</Link>
+            <Link to="/mentoring">{t("products.bookMentoring")}</Link>
           </Button>
         </motion.div>
       </div>
