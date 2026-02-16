@@ -1,6 +1,6 @@
-# Pintarware — Platform Edukasi
+# Pintarware — Educational Platform
 
-Website Pintarware untuk edukasi programming: kursus online, blog, produk digital, dan mentoring.
+Pintarware website for programming education: online courses, blog, digital products, and mentoring.
 
 ## Tech Stack
 
@@ -10,22 +10,22 @@ Website Pintarware untuk edukasi programming: kursus online, blog, produk digita
 - Framer Motion
 - React Router v7
 
-## Menjalankan
+## Running the Project
 
 ```bash
 npm install
 npm run dev
 ```
 
-Buka http://localhost:5173
+Open http://localhost:5173
 
-## Struktur Halaman
+## Page Structure
 
 - **/** — Home
-- **/courses** — Kursus online (gratis & berbayar)
-- **/blog** — Blog & artikel
-- **/products** — Produk digital (template, starter kit)
-- **/mentoring** — Mentoring 1-on-1 (rate per jam)
+- **/courses** — Online courses (free & paid)
+- **/blog** — Blog & articles
+- **/products** — Digital products (templates, starter kits)
+- **/mentoring** — 1-on-1 mentoring (hourly rate)
 
 ## Design System
 
