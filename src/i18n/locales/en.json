@@ -106,7 +106,10 @@
     "product2Price": "Rp 149.000",
     "product3Title": "Landing Page Generator",
     "product3Desc": "Modular landing page components—hero, features, pricing. Copy-paste and customize.",
-    "product3Price": "Free"
+    "product3Price": "Free",
+    "product4Title": "WalletWise",
+    "product4Desc": "Expense tracking SaaS—wallets, transactions, subscriptions. React + Express + PostgreSQL. Full demo with auth and billing.",
+    "product4Price": "Live Demo"
   },
   "mentoring": {
     "rate": "Rp XXX.XXX / hour",

@@ -9,6 +9,7 @@ const productsConfig = [
   { titleKey: "product1Title", descKey: "product1Desc", priceKey: "product1Price", link: "#" },
   { titleKey: "product2Title", descKey: "product2Desc", priceKey: "product2Price", link: "#" },
   { titleKey: "product3Title", descKey: "product3Desc", priceKey: "product3Price", link: "#" },
+  { titleKey: "product4Title", descKey: "product4Desc", priceKey: "product4Price", link: "https://walletwise.pintarware.com" },
 ];
 
 export default function ProductsPage() {
