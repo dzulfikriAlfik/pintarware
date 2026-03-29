@@ -6,6 +6,8 @@ import BlogPage from "@/pages/BlogPage";
 import BlogDetailPage from "@/pages/BlogDetailPage";
 import ProductsPage from "@/pages/ProductsPage";
 import MentoringPage from "@/pages/MentoringPage";
+import ProjectsPage from "@/pages/ProjectsPage";
+import ContactPage from "@/pages/ContactPage";
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:slug" element={<BlogDetailPage />} />
           <Route path="products" element={<ProductsPage />} />
+          <Route path="projects" element={<ProjectsPage />} />
           <Route path="mentoring" element={<MentoringPage />} />
+          <Route path="contact" element={<ContactPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

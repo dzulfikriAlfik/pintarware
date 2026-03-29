@@ -3,8 +3,10 @@
     "home": "Home",
     "courses": "Courses",
     "blog": "Blog",
+    "projects": "Projects",
     "products": "Digital Products",
     "mentoring": "Mentoring",
+    "contact": "Contact",
     "startLearning": "Start Learning"
   },
   "home": {
@@ -131,6 +133,21 @@
     "step3Title": "Session runs",
     "step3Desc": "Meet via Google Meet/Zoom. Session focused on what you need.",
     "bookMentoring": "Book Mentoring"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A curated selection of real-world work and experiments.",
+    "empty": "No projects found.",
+    "browseBlog": "Browse blog"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have a project in mind? I'd love to hear from you.",
+    "socialTitle": "Connect on Social",
+    "reasonsTitle": "Why Work Together?",
+    "noReasons": "No collaboration reasons configured.",
+    "emailCta": "Email me",
+    "backToBlog": "Back to Blog"
   },
   "seo": {
     "homeTitle": "Pintarware — Learn & Grow Together | Courses, Blog, Mentoring",

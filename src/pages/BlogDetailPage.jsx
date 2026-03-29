@@ -1,38 +1,44 @@
 import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { SEO } from "@/components/seo/SEO";
 import { SITE_URL } from "@/config/site";
-
-const slugToPostKey = {
-  "tips-belajar-programming": "post1",
-  "react-vs-vue-2025": "post2",
-  "api-design-laravel": "post3",
-};
-
-const postDates = {
-  "tips-belajar-programming": { date: "12 Feb 2025", dateISO: "2025-02-12" },
-  "react-vs-vue-2025": { date: "8 Feb 2025", dateISO: "2025-02-08" },
-  "api-design-laravel": { date: "1 Feb 2025", dateISO: "2025-02-01" },
-};
+import { getBlogPost } from "@/lib/cmsClient";
 
 export default function BlogDetailPage() {
   const { slug } = useParams();
-  const { t } = useTranslation();
-  const postKey = slugToPostKey[slug];
-  const dates = postDates[slug];
-  const post = postKey
-    ? {
-        title: t(`blogDetail.${postKey}Title`),
-        content: t(`blogDetail.${postKey}Content`),
-        description: t(`blogDetail.${postKey}Desc`),
-        date: dates?.date,
-        dateISO: dates?.dateISO,
-      }
-    : null;
+  const { t, i18n } = useTranslation();
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!post) {
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      setLoading(true);
+      try {
+        const locale = i18n.language === "id" ? "id" : "en";
+        const payload = await getBlogPost(slug, locale);
+        if (cancelled) return;
+        setPost(payload?.data ?? null);
+      } catch {
+        if (cancelled) return;
+        setPost(null);
+      } finally {
+        if (cancelled) return;
+        setLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, i18n.language]);
+
+  if (!loading && !post) {
     return (
       <div className="pt-24 pb-20 max-w-4xl mx-auto px-6">
         <SEO title={t("blogDetail.articleNotFound")} description="Page not found." path="/blog/404" />
@@ -44,12 +50,20 @@ export default function BlogDetailPage() {
     );
   }
 
+  if (loading) {
+    return (
+      <div className="pt-24 pb-20 max-w-4xl mx-auto px-6">
+        <p className="text-stone-600">Loading...</p>
+      </div>
+    );
+  }
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
-    description: post.description || post.content,
-    datePublished: post.dateISO || post.date,
+    description: post.excerpt || post.title,
+    datePublished: post.published_at || post.date,
     author: { "@type": "Organization", name: "Pintarware" },
     publisher: {
       "@type": "Organization",
@@ -63,7 +77,7 @@ export default function BlogDetailPage() {
     <div className="pt-24 pb-20">
       <SEO
         title={post.title}
-        description={post.description || post.content}
+        description={post.excerpt || ""}
         path={`/blog/${slug}`}
         type="article"
         jsonLd={articleJsonLd}
@@ -78,17 +92,14 @@ export default function BlogDetailPage() {
           </Link>
 
           <span className="text-sm text-stone-500 flex items-center gap-1.5 mb-4">
-            <Calendar className="w-4 h-4" /> {post.date}
+            <Calendar className="w-4 h-4" /> {post.date ?? ""}
           </span>
           <h1 className="font-display text-3xl sm:text-4xl font-bold text-stone-900 mb-6">
             {post.title}
           </h1>
 
           <div className="prose prose-stone max-w-none">
-            <p className="text-stone-600 leading-relaxed text-lg">{post.content}</p>
-            <p className="text-stone-600 leading-relaxed mt-4">
-              {t("blogDetail.fullContentSoon")}
-            </p>
+            <div dangerouslySetInnerHTML={{ __html: post.body ?? "" }} />
           </div>
         </motion.div>
       </article>

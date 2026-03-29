@@ -1,17 +1,41 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { FileText, Calendar, ArrowRight } from "lucide-react";
 import { SEO } from "@/components/seo/SEO";
-
-const postsConfig = [
-  { slug: "tips-belajar-programming", titleKey: "post1Title", excerptKey: "post1Excerpt", date: "12 Feb 2025" },
-  { slug: "react-vs-vue-2025", titleKey: "post2Title", excerptKey: "post2Excerpt", date: "8 Feb 2025" },
-  { slug: "api-design-laravel", titleKey: "post3Title", excerptKey: "post3Excerpt", date: "1 Feb 2025" },
-];
+import { getBlogPosts } from "@/lib/cmsClient";
 
 export default function BlogPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      setLoading(true);
+      try {
+        const locale = i18n.language === "id" ? "id" : "en";
+        const payload = await getBlogPosts(locale);
+        if (cancelled) return;
+        setPosts(Array.isArray(payload?.data) ? payload.data : []);
+      } catch {
+        if (cancelled) return;
+        setPosts([]);
+      } finally {
+        if (cancelled) return;
+        setLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [i18n.language]);
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -36,7 +60,12 @@ export default function BlogPage() {
         </motion.div>
 
         <div className="space-y-8">
-          {postsConfig.map((post, i) => (
+          {loading ? (
+            <p className="text-stone-600">Loading...</p>
+          ) : posts.length === 0 ? (
+            <p className="text-stone-600">{t("blog.stayTuned")}</p>
+          ) : (
+            posts.map((post, i) => (
             <motion.article
               key={post.slug}
               initial={{ opacity: 0, y: 24 }}
@@ -53,12 +82,12 @@ export default function BlogPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <span className="text-sm text-stone-500 flex items-center gap-1.5 mb-2">
-                      <Calendar className="w-4 h-4" /> {post.date}
+                      <Calendar className="w-4 h-4" /> {post.date ?? ""}
                     </span>
                     <h2 className="font-display font-semibold text-xl text-stone-900 mb-2 group-hover:text-teal-600 transition-colors">
-                      {t(`blog.${post.titleKey}`)}
+                      {post.title}
                     </h2>
-                    <p className="text-stone-600">{t(`blog.${post.excerptKey}`)}</p>
+                    <p className="text-stone-600">{post.excerpt}</p>
                     <span className="inline-flex items-center gap-1 text-teal-600 text-sm font-medium mt-3 group-hover:gap-2 transition-all">
                       {t("blog.readMore")} <ArrowRight className="w-4 h-4" />
                     </span>
@@ -66,7 +95,8 @@ export default function BlogPage() {
                 </div>
               </Link>
             </motion.article>
-          ))}
+            ))
+          )}
         </div>
 
         <motion.div

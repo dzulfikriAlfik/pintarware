@@ -11,7 +11,9 @@ const navPaths = [
   { path: "/", key: "home" },
   { path: "/courses", key: "courses" },
   { path: "/blog", key: "blog" },
+  { path: "/projects", key: "projects" },
   { path: "/products", key: "products" },
+  { path: "/contact", key: "contact" },
   { path: "/mentoring", key: "mentoring" },
 ];
 

@@ -3,8 +3,10 @@
     "home": "Beranda",
     "courses": "Kursus",
     "blog": "Blog",
+    "projects": "Proyek",
     "products": "Produk Digital",
     "mentoring": "Mentoring",
+    "contact": "Kontak",
     "startLearning": "Mulai Belajar"
   },
   "home": {
@@ -131,6 +133,21 @@
     "step3Title": "Sesi berjalan",
     "step3Desc": "Meet via Google Meet/Zoom. Sesi fokus sesuai yang kamu butuhkan.",
     "bookMentoring": "Booking Mentoring"
+  },
+  "projects": {
+    "title": "Proyek",
+    "subtitle": "Kumpulan karya dan eksperimen yang relevan.",
+    "empty": "Belum ada proyek yang tersedia.",
+    "browseBlog": "Lihat blog"
+  },
+  "contact": {
+    "title": "Kontak",
+    "subtitle": "Punya proyek atau ide kolaborasi? Saya ingin mendengarnya.",
+    "socialTitle": "Terhubung di Sosial Media",
+    "reasonsTitle": "Kenapa Kolaborasi?",
+    "noReasons": "Alasan kolaborasi belum diatur.",
+    "emailCta": "Kirim email",
+    "backToBlog": "Kembali ke Blog"
   },
   "seo": {
     "homeTitle": "Pintarware — Belajar & Tumbuh Bersama | Kursus, Blog, Mentoring",
