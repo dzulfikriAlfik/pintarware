@@ -98,9 +98,11 @@ export default function BlogDetailPage() {
             {post.title}
           </h1>
 
-          <div className="prose prose-stone max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: post.body ?? "" }} />
-          </div>
+          <div
+            className="prose prose-stone max-w-none prose-base prose-headings:font-display prose-img:rounded-xl prose-a:text-teal-700 prose-a:no-underline hover:prose-a:underline"
+            dangerouslySetInnerHTML={{ __html: post.body ?? "" }}
+          />
+    
         </motion.div>
       </article>
     </div>

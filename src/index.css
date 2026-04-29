@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Pintarware Educational — Scholarly Warmth Palette */
 @theme {
