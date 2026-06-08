@@ -95,7 +95,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-display text-4xl sm:text-5xl lg:text-[66px] text-forest-ink mb-8"
+              className="text-display text-4xl sm:text-5xl lg:text-heading-lg text-forest-ink mb-8"
             >
               {t("home.heroTitle")}{" "}
               <span className="highlight-word">{t("home.heroTitleHighlight")}</span>{" "}
