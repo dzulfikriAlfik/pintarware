@@ -4,29 +4,31 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-ink focus-visible:ring-offset-2 focus-visible:ring-offset-cream-paper disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
   {
     variants: {
       variant: {
         default:
-          "bg-teal-600 text-white shadow-lg shadow-teal-600/25 hover:bg-teal-500 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0",
-        accent:
-          "bg-amber-600 text-white shadow-lg shadow-amber-600/25 hover:bg-amber-500 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0",
+          "bg-forest-ink text-cream-paper shadow-[var(--shadow-subtle)] hover:shadow-[var(--shadow-subtle-2)]",
         outline:
-          "border-2 border-teal-600 text-teal-600 bg-transparent hover:bg-teal-50 hover:border-teal-500",
+          "border border-forest-ink text-forest-ink bg-transparent hover:bg-forest-ink/5",
+        pastel:
+          "bg-sticky-note-mint text-forest-ink hover:bg-sticky-note-teal",
+        pastelBlush:
+          "bg-sticky-note-blush text-forest-ink hover:opacity-90",
+        pastelTeal:
+          "bg-sticky-note-teal text-forest-ink hover:opacity-90",
         ghost:
-          "text-stone-700 hover:bg-stone-100 hover:text-teal-600",
+          "text-forest-ink hover:bg-whisper-gray",
         secondary:
-          "bg-stone-100 text-stone-800 hover:bg-stone-200",
-        dark:
-          "bg-stone-800 text-white hover:bg-stone-900 shadow-lg",
+          "bg-whisper-gray text-forest-ink hover:bg-pencil-gray/30",
       },
       size: {
-        default: "h-11 px-6 py-2",
-        sm: "h-9 rounded-lg px-4 text-xs",
-        lg: "h-12 rounded-xl px-8 text-base",
-        xl: "h-14 rounded-2xl px-10 text-lg",
-        icon: "h-10 w-10 rounded-xl",
+        default: "h-11 px-5 py-2 text-base",
+        sm: "h-9 px-4 text-sm",
+        lg: "h-auto px-10 py-[19px] text-base",
+        compact: "h-9 px-4 py-2 text-sm",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
