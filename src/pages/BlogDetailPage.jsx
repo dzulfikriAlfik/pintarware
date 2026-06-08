@@ -40,10 +40,10 @@ export default function BlogDetailPage() {
 
   if (!loading && !post) {
     return (
-      <div className="pt-24 pb-20 max-w-4xl mx-auto px-6">
+      <div className="pb-20 max-w-4xl mx-auto px-6">
         <SEO title={t("blogDetail.articleNotFound")} description="Page not found." path="/blog/404" />
-        <p className="text-stone-600">{t("blogDetail.articleNotFound")}</p>
-        <Link to="/blog" className="text-teal-600 hover:underline mt-4 inline-block">
+        <p className="text-forest-ink">{t("blogDetail.articleNotFound")}</p>
+        <Link to="/blog" className="text-forest-ink hover:underline mt-4 inline-block">
           {t("blogDetail.backToBlogLink")}
         </Link>
       </div>
@@ -52,17 +52,29 @@ export default function BlogDetailPage() {
 
   if (loading) {
     return (
-      <div className="pt-24 pb-20 max-w-4xl mx-auto px-6">
-        <p className="text-stone-600">Loading...</p>
+      <div className="pb-20 max-w-4xl mx-auto px-6">
+        <p className="text-pencil-gray">Loading...</p>
       </div>
     );
   }
+
+  const metaDescription =
+    (post.seo?.description && String(post.seo.description).trim()) ||
+    (post.excerpt && String(post.excerpt).trim()) ||
+    post.title;
+  const metaKeywords =
+    (post.seo?.keywords && String(post.seo.keywords).trim()) || undefined;
+  const metaImage =
+    (post.seo?.image && String(post.seo.image).trim()) ||
+    `${SITE_URL}/pintarware.png`;
+  const titleForSeo =
+    (post.seo?.title && String(post.seo.title).trim()) || post.title;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
-    description: post.excerpt || post.title,
+    description: metaDescription || post.title,
     datePublished: post.published_at || post.date,
     author: { "@type": "Organization", name: "Pintarware" },
     publisher: {
@@ -71,35 +83,38 @@ export default function BlogDetailPage() {
       logo: { "@type": "ImageObject", url: `${SITE_URL}/pintarware.png` },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${slug}` },
+    image: metaImage ? [metaImage] : undefined,
   };
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
       <SEO
-        title={post.title}
-        description={post.excerpt || ""}
+        title={titleForSeo}
+        description={metaDescription}
+        keywords={metaKeywords}
         path={`/blog/${slug}`}
         type="article"
+        image={metaImage}
         jsonLd={articleJsonLd}
       />
       <article className="max-w-3xl mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 text-stone-600 hover:text-teal-600 mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-pencil-gray hover:text-forest-ink mb-8 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> {t("blogDetail.backToBlog")}
           </Link>
 
-          <span className="text-sm text-stone-500 flex items-center gap-1.5 mb-4">
+          <span className="text-sm text-pencil-gray flex items-center gap-1.5 mb-4 font-roboto-mono">
             <Calendar className="w-4 h-4" /> {post.date ?? ""}
           </span>
-          <h1 className="font-display text-3xl sm:text-4xl font-bold text-stone-900 mb-6">
+          <h1 className="text-display-sm text-3xl sm:text-4xl text-forest-ink mb-6">
             {post.title}
           </h1>
 
           <div
-            className="prose prose-stone max-w-none prose-base prose-headings:font-display prose-img:rounded-xl prose-a:text-teal-700 prose-a:no-underline hover:prose-a:underline"
+            className="prose prose-pintarware max-w-none prose-base prose-headings:font-semibold prose-img:rounded-xl prose-a:text-forest-ink prose-a:underline hover:prose-a:no-underline"
             dangerouslySetInnerHTML={{ __html: post.body ?? "" }}
           />
     

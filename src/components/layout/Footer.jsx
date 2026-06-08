@@ -29,18 +29,17 @@ export function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="relative bg-stone-800 text-stone-300 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(20,184,166,0.08)_0%,transparent_50%)]" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/30 to-transparent" />
-
-      <div className="relative max-w-6xl mx-auto px-6 py-16">
+    <footer className="relative bg-cream-paper border-t border-pencil-gray overflow-hidden">
+      <div className="relative max-w-[1200px] mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <img src="/pintarware.png" alt="Pintarware" className="w-10 h-10 object-contain" />
-              <span className="font-display font-semibold text-white text-lg">Pintarware</span>
+              <div className="w-10 h-10 rounded-md border-2 border-highlighter-yellow flex items-center justify-center">
+                <img src="/pintarware.png" alt="" className="w-7 h-7 object-contain" />
+              </div>
+              <span className="font-bold text-xl text-forest-ink">Pintarware</span>
             </Link>
-            <p className="text-stone-400 text-sm leading-relaxed max-w-sm mb-6">
+            <p className="text-pencil-gray text-sm leading-relaxed max-w-sm mb-6">
               {t("footer.description")}
             </p>
             <div className="flex gap-3">
@@ -50,7 +49,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-stone-700/50 border border-stone-600 flex items-center justify-center text-stone-400 hover:text-teal-400 hover:border-teal-500/30 transition-all"
+                  className="w-10 h-10 rounded-md border border-pencil-gray flex items-center justify-center text-forest-ink hover:bg-sticky-note-mint hover:border-forest-ink transition-all"
                   aria-label={social.label}
                 >
                   <social.icon className="w-4 h-4" />
@@ -61,7 +60,7 @@ export function Footer() {
 
           {footerLinksConfig.map((group) => (
             <div key={group.titleKey}>
-              <h4 className="font-display font-semibold text-white text-sm uppercase tracking-wider mb-4">
+              <h4 className="font-semibold text-forest-ink text-sm font-roboto-mono uppercase tracking-wider mb-4">
                 {t(`footer.${group.titleKey}`)}
               </h4>
               <ul className="space-y-2.5">
@@ -69,7 +68,7 @@ export function Footer() {
                   <li key={link.path}>
                     <Link
                       to={link.path}
-                      className="text-sm text-stone-400 hover:text-teal-400 transition-colors flex items-center gap-1 group"
+                      className="text-sm text-forest-ink hover:underline flex items-center gap-1 group"
                     >
                       {t(`nav.${link.key}`)}
                       <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all" />
@@ -81,7 +80,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="pt-8 border-t border-stone-700 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-stone-500">
+        <div className="pt-8 border-t border-pencil-gray flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-pencil-gray">
           <p>{t("footer.copyright", { year: new Date().getFullYear() })}</p>
           <p className="flex items-center gap-1.5">
             {t("footer.createdBy")}{" "}
@@ -89,11 +88,11 @@ export function Footer() {
               href="https://dzulfikri.pintarware.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-teal-400 hover:text-teal-300 transition-colors underline-offset-2 hover:underline"
+              className="text-forest-ink hover:underline underline-offset-2"
             >
               Dzulfikri
             </a>
-            {" "}• {t("footer.madeWith")} <Heart className="w-3.5 h-3.5 text-amber-500 fill-amber-500 inline" /> React + Tailwind
+            {" "}• {t("footer.madeWith")} <Heart className="w-3.5 h-3.5 text-terracotta fill-terracotta inline" /> React + Tailwind
           </p>
         </div>
       </div>

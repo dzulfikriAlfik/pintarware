@@ -9,7 +9,7 @@ const benefitKeys = ["benefit1", "benefit2", "benefit3", "benefit4"];
 export default function MentoringPage() {
   const { t } = useTranslation();
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
       <SEO
         title={t("mentoring.title")}
         description="Pintarware 1-on-1 programming mentoring—hourly live sessions. Technical discussion, code review, project guidance. Booking available."
@@ -23,30 +23,30 @@ export default function MentoringPage() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <h1 className="font-display text-3xl sm:text-4xl font-bold text-stone-900 mb-4">
+          <h1 className="text-display-sm text-3xl sm:text-4xl text-forest-ink mb-4">
             {t("mentoring.title")}
           </h1>
-          <p className="text-stone-600 max-w-2xl text-lg">
+          <p className="text-forest-ink max-w-2xl text-lg">
             {t("mentoring.subtitle")}
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 items-start">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="p-8 rounded-2xl bg-white border border-stone-200 shadow-lg"
+            className="p-8 rounded-xl bg-sticky-note-mint border border-forest-ink"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center">
+              <div className="w-14 h-14 rounded-md bg-highlighter-yellow text-forest-ink flex items-center justify-center">
                 <MessageCircle className="w-7 h-7" />
               </div>
               <div>
-                <h2 className="font-display font-semibold text-xl text-stone-900">
+                <h2 className="font-semibold text-xl text-forest-ink">
                   {t("mentoring.liveSession")}
                 </h2>
-                <p className="text-sm text-stone-500 flex items-center gap-1">
+                <p className="text-sm text-pencil-gray flex items-center gap-1 font-roboto-mono">
                   <Clock className="w-4 h-4" /> {t("mentoring.perSession")}
                 </p>
               </div>
@@ -54,30 +54,30 @@ export default function MentoringPage() {
 
             <ul className="space-y-3 mb-8">
               {benefitKeys.map((key) => (
-                <li key={key} className="flex items-center gap-3 text-stone-700">
-                  <CheckCircle2 className="w-5 h-5 text-teal-500 shrink-0" />
+                <li key={key} className="flex items-center gap-3 text-forest-ink">
+                  <CheckCircle2 className="w-5 h-5 text-forest-ink shrink-0" />
                   {t(`mentoring.${key}`)}
                 </li>
               ))}
             </ul>
 
-            <div className="p-4 rounded-xl bg-amber-50 border border-amber-200/60 mb-6">
-              <p className="text-sm text-stone-700">
-                <span className="font-semibold text-amber-700">Rate:</span> {t("mentoring.rate")}
+            <div className="p-4 rounded-md bg-highlighter-yellow mb-6">
+              <p className="text-sm text-forest-ink">
+                <span className="font-semibold">Rate:</span> {t("mentoring.rate")}
               </p>
-              <p className="text-xs text-stone-500 mt-1">
+              <p className="text-xs text-pencil-gray mt-1">
                 {t("mentoring.rateNote")}
               </p>
             </div>
 
-            <Button variant="accent" size="lg" className="w-full" asChild>
+            <Button variant="default" size="lg" className="w-full" asChild>
               <a
                 href="mailto:dzulfikri.alkautsari@gmail.com?subject=Booking%20Mentoring%20Pintarware"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Calendar className="w-4 h-4" />
-                {t("mentoring.bookViaEmail")}
+                → {t("mentoring.bookViaEmail")}
               </a>
             </Button>
           </motion.div>
@@ -86,39 +86,23 @@ export default function MentoringPage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="p-8 rounded-2xl bg-stone-100 border border-stone-200"
+            className="p-8 rounded-xl bg-cream-paper border border-forest-ink"
           >
-            <h3 className="font-display font-semibold text-lg text-stone-900 mb-4">
+            <h3 className="font-semibold text-lg text-forest-ink mb-4">
               {t("mentoring.howToBook")}
             </h3>
             <ol className="space-y-4">
-              <li className="flex gap-4">
-                <span className="w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center text-sm font-semibold shrink-0">
-                  1
-                </span>
-                <div>
-                  <p className="font-medium text-stone-800">{t("mentoring.step1Title")}</p>
-                  <p className="text-sm text-stone-600">{t("mentoring.step1Desc")}</p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <span className="w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center text-sm font-semibold shrink-0">
-                  2
-                </span>
-                <div>
-                  <p className="font-medium text-stone-800">{t("mentoring.step2Title")}</p>
-                  <p className="text-sm text-stone-600">{t("mentoring.step2Desc")}</p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <span className="w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center text-sm font-semibold shrink-0">
-                  3
-                </span>
-                <div>
-                  <p className="font-medium text-stone-800">{t("mentoring.step3Title")}</p>
-                  <p className="text-sm text-stone-600">{t("mentoring.step3Desc")}</p>
-                </div>
-              </li>
+              {[1, 2, 3].map((step) => (
+                <li key={step} className="flex gap-4">
+                  <span className="w-8 h-8 rounded-md bg-forest-ink text-cream-paper flex items-center justify-center text-sm font-semibold shrink-0 font-roboto-mono">
+                    {step}
+                  </span>
+                  <div>
+                    <p className="font-medium text-forest-ink">{t(`mentoring.step${step}Title`)}</p>
+                    <p className="text-sm text-pencil-gray">{t(`mentoring.step${step}Desc`)}</p>
+                  </div>
+                </li>
+              ))}
             </ol>
           </motion.div>
         </div>

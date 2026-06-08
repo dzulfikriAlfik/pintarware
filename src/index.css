@@ -1,123 +1,154 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Pintarware Educational — Scholarly Warmth Palette */
 @theme {
-  /* Primary: Teal — trust, learning, growth */
-  --color-teal: #0F766E;
-  --color-teal-50: #F0FDFA;
-  --color-teal-100: #CCFBF1;
-  --color-teal-200: #99F6E4;
-  --color-teal-300: #5EEAD4;
-  --color-teal-400: #2DD4BF;
-  --color-teal-500: #14B8A6;
-  --color-teal-600: #0D9488;
-  --color-teal-700: #0F766E;
-  --color-teal-800: #115E59;
-  --color-teal-900: #134E4A;
+  /* Breakpoints — nav-xl: inline locale + CTA; below: hamburger actions */
+  --breakpoint-nav-xl: 71.6875rem; /* 1147px */
 
-  /* Accent: Amber — achievement, CTA, warmth */
-  --color-amber: #D97706;
-  --color-amber-50: #FFFBEB;
-  --color-amber-100: #FEF3C7;
-  --color-amber-200: #FDE68A;
-  --color-amber-300: #FCD34D;
-  --color-amber-400: #FBBF24;
-  --color-amber-500: #F59E0B;
-  --color-amber-600: #D97706;
-  --color-amber-700: #B45309;
-  --color-amber-800: #92400E;
-  --color-amber-900: #78350F;
-
-  /* Neutrals: Stone — warm, readable */
-  --color-stone: #1C1917;
-  --color-stone-50: #FAFAF9;
-  --color-stone-100: #F5F5F4;
-  --color-stone-200: #E7E5E4;
-  --color-stone-300: #D6D3D1;
-  --color-stone-400: #A8A29E;
-  --color-stone-500: #78716C;
-  --color-stone-600: #57534E;
-  --color-stone-700: #44403C;
-  --color-stone-800: #292524;
-  --color-stone-900: #1C1917;
-
-  /* Semantic */
-  --color-surface: #FFFFFF;
-  --color-bg: #FAFAF9;
-  --color-bg-warm: #FEFDFB;
+  /* Colors */
+  --color-forest-ink: #1a3300;
+  --color-highlighter-yellow: #ffe95c;
+  --color-cream-paper: #fcfaf5;
+  --color-pencil-gray: #b6b6b6;
+  --color-whisper-gray: #f1f1f1;
+  --color-sticky-note-teal: #a8e5e5;
+  --color-sticky-note-mint: #d5f5c2;
+  --color-sticky-note-blush: #f6d0ff;
+  --color-terracotta: #cb5521;
 
   /* Typography */
-  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-bricolage-grotesque: 'Bricolage Grotesque', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-roboto-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-bricolage-grotesque);
+
+  /* Typography — Scale */
+  --text-micro: 11px;
+  --text-caption: 14px;
+  --text-body-sm: 16px;
+  --text-body: 18px;
+  --text-body-lg: 20px;
+  --text-subheading: 28px;
+  --text-heading-sm: 40px;
+  --text-heading: 55px;
+  --text-heading-lg: 66px;
+  --text-display: 90px;
+
+  /* Border Radius */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  --shadow-subtle-2: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+  --shadow-xl: rgba(255, 235, 90, 0.01) 0px 527px 211px 0px, rgba(255, 235, 90, 0.05) 0px 297px 178px 0px, rgba(255, 235, 90, 0.09) 0px 132px 132px 0px, rgba(255, 235, 90, 0.1) 0px 33px 72px 0px;
 }
 
-/* Custom animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
 }
 
 .animate-fade-up {
   animation: fadeUp 0.6s ease-out forwards;
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+:root {
+  /* Design spacing tokens (prefixed — do not put in @theme, they override Tailwind scale) */
+  --ds-spacing-8: 8px;
+  --ds-spacing-16: 16px;
+  --ds-spacing-24: 24px;
+  --ds-spacing-32: 32px;
+  --ds-spacing-64: 64px;
+  --ds-spacing-80: 80px;
+
+  /* Floating navbar clearance: top-4 + nav height + breathing room */
+  --layout-nav-top: 1rem;
+  --layout-nav-height: 4.75rem;
+  --layout-nav-gap: 2rem;
+  --layout-nav-offset: calc(var(--layout-nav-top) + var(--layout-nav-height) + var(--layout-nav-gap));
 }
 
-/* Base */
+@media (min-width: 1024px) {
+  :root {
+    --layout-nav-height: 5.25rem;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--color-bg);
-  color: var(--color-stone-900);
-  line-height: 1.6;
+  font-family: var(--font-inter);
+  background-color: var(--color-cream-paper);
+  color: var(--color-forest-ink);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: var(--color-teal-300);
-  color: var(--color-teal-900);
+  background-color: var(--color-highlighter-yellow);
+  color: var(--color-forest-ink);
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-stone-100);
+  background: var(--color-whisper-gray);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-stone-300);
+  background: var(--color-pencil-gray);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-teal-600);
+  background: var(--color-forest-ink);
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, var(--color-teal-700) 0%, var(--color-teal-500) 50%, var(--color-amber-600) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Display headline utility */
+.text-display {
+  font-family: var(--font-bricolage-grotesque);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.text-display-sm {
+  font-family: var(--font-bricolage-grotesque);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+}
+
+/* Highlighter marker effect */
+.highlight-word {
+  background-color: var(--color-highlighter-yellow);
+  padding: 0 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Nav yellow glow */
+.nav-glow {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Prose overrides for blog */
+.prose-pintarware {
+  --tw-prose-body: var(--color-forest-ink);
+  --tw-prose-headings: var(--color-forest-ink);
+  --tw-prose-links: var(--color-forest-ink);
+  --tw-prose-bold: var(--color-forest-ink);
+  --tw-prose-quotes: var(--color-forest-ink);
+  --tw-prose-code: var(--color-forest-ink);
 }
