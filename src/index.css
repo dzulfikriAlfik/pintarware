@@ -69,7 +69,7 @@
   /* Floating navbar clearance: top-4 + nav height + breathing room */
   --layout-nav-top: 1rem;
   --layout-nav-height: 4.75rem;
-  --layout-nav-gap: 1.5rem;
+  --layout-nav-gap: 2rem;
   --layout-nav-offset: calc(var(--layout-nav-top) + var(--layout-nav-height) + var(--layout-nav-gap));
 }
 
