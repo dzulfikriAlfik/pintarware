@@ -58,11 +58,23 @@ export default function BlogDetailPage() {
     );
   }
 
+  const metaDescription =
+    (post.seo?.description && String(post.seo.description).trim()) ||
+    (post.excerpt && String(post.excerpt).trim()) ||
+    post.title;
+  const metaKeywords =
+    (post.seo?.keywords && String(post.seo.keywords).trim()) || undefined;
+  const metaImage =
+    (post.seo?.image && String(post.seo.image).trim()) ||
+    `${SITE_URL}/pintarware.png`;
+  const titleForSeo =
+    (post.seo?.title && String(post.seo.title).trim()) || post.title;
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
-    description: post.excerpt || post.title,
+    description: metaDescription || post.title,
     datePublished: post.published_at || post.date,
     author: { "@type": "Organization", name: "Pintarware" },
     publisher: {
@@ -71,15 +83,18 @@ export default function BlogDetailPage() {
       logo: { "@type": "ImageObject", url: `${SITE_URL}/pintarware.png` },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${slug}` },
+    image: metaImage ? [metaImage] : undefined,
   };
 
   return (
     <div className="pt-24 pb-20">
       <SEO
-        title={post.title}
-        description={post.excerpt || ""}
+        title={titleForSeo}
+        description={metaDescription}
+        keywords={metaKeywords}
         path={`/blog/${slug}`}
         type="article"
+        image={metaImage}
         jsonLd={articleJsonLd}
       />
       <article className="max-w-3xl mx-auto px-6">
